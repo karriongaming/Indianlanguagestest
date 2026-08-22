@@ -1922,6 +1922,8 @@ aria-label="Search a language, family, or region"
 </div>
 </div>
 
+<script src="quiz.js"></script>
+
 <script>
 (function(){
 
@@ -2796,7 +2798,13 @@ function render(){
     filtersWrap.style.display = "none";
     search.style.display = "none";
     count.style.display = "none";
-    renderQuizHome();
+
+    if (typeof window.renderQuizHome === "function") {
+      window.renderQuizHome();
+    } else {
+      chart.innerHTML = '<div class="i121-quiz"><div class="i121-quiz-card i121-quiz-result"><div class="i121-quiz-title">Quiz is loading…</div></div></div>';
+    }
+
     return;
   }
 
@@ -2900,6 +2908,6 @@ window.I121_STATE_C16=STATE_C16;
 })();
 </script>
 
-<script src="quiz.js"></script>
+
 </body>
 </html>
